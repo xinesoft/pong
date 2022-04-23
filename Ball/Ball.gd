@@ -16,8 +16,9 @@ func _ready():
 func _physics_process(delta):
 	var collision = move_and_collide(direction * SPEED * delta)
 
-	if collision and (collision.collider.name == 'Paddle' or collision.collider.name == 'Enemy') :
-		direction.y = rand_range(0, 1) * -1;
+	if collision and (collision.collider.name == 'Paddle' or collision.collider.name == 'Enemy'):
+		var collision_pos = collision.collider.position - position
+		direction.y = collision_pos.normalized().y * -1;
 		direction.x *= -1
 
 	if position.y < 0 or position.y > screen_size.y:
