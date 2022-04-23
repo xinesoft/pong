@@ -20,12 +20,6 @@ font_data = SubResource( 1 )
 texture = ExtResource( 1 )
 offset = Vector2( 300, 200 )
 
-[node name="Paddle" parent="." instance=ExtResource( 2 )]
-
-[node name="Ball" parent="." instance=ExtResource( 3 )]
-
-[node name="Enemy" parent="." instance=ExtResource( 4 )]
-
 [node name="ArrowDown" parent="." instance=ExtResource( 5 )]
 
 [node name="ArrowUP" parent="." instance=ExtResource( 6 )]
@@ -46,6 +40,12 @@ custom_fonts/font = SubResource( 2 )
 text = "0"
 align = 1
 valign = 1
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+
+[node name="Paddle" parent="." instance=ExtResource( 2 )]
+
+[node name="Ball" parent="." instance=ExtResource( 3 )]
 
 [connection signal="input_event" from="ArrowDown" to="Paddle" method="_on_ArrowDown_input_event"]
 [connection signal="input_event" from="ArrowUP" to="Paddle" method="_on_ArrowUP_input_event"]
