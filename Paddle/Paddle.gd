@@ -11,7 +11,7 @@ var buttonPressed = false;
 func _ready():
 	paddleHeight = $paddle_sprite.texture.get_height() / 2
 
-func _process(delta):
+func _physics_process(delta):
 	if not buttonPressed :
 		direction = Vector2.ZERO
 
@@ -19,8 +19,7 @@ func _process(delta):
 		direction = Vector2.UP
 	if Input.is_action_pressed("ui_down"):
 		direction = Vector2.DOWN
-	
-		
+
 	move_and_collide(direction * SPEED * delta);
 	
 	if position.y > screen_size.y - paddleHeight: 

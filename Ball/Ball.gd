@@ -1,24 +1,37 @@
 extends KinematicBody2D
 
-var speed = Vector2(-200, 0)
+const SPEED = 300;
+
 onready var screen_size = get_viewport_rect().size
-var rng = RandomNumberGenerator.new()
+
 var initialPosition = Vector2.ZERO;
+var direction = Vector2.LEFT;
+
+onready var ScoreRight = get_parent().get_node("ScoreRight")
+onready var ScoreLeft = get_parent().get_node("ScoreLeft")
 
 func _ready():
 	initialPosition = position;
 
-func _process(delta):
-	var collision = move_and_collide(speed * delta)
-	if collision and (collision.collider.name == 'Paddle' or collision.collider.name == 'Enemy') :
+func _physics_process(delta):
+	var collision = move_and_collide(direction * SPEED * delta)
 
-		speed.y = rng.randf_range(-300, 300)
-		speed.x *= -1
+	if collision and (collision.collider.name == 'Paddle' or collision.collider.name == 'Enemy') :
+		direction.y = rand_range(0, 1) * -1;
+		direction.x *= -1
 
 	if position.y < 0 or position.y > screen_size.y:
-		speed.y *= -1
+		direction.y *= -1
 	
-	if position.x < 0 or position.x > screen_size.x:
-		position = initialPosition
+	if position.x < 0:
+		ScoreRight.text = str(int(ScoreRight.text) + 1)
 		
-		speed.y = 0
+		position = initialPosition
+		direction.y = 0
+	
+	if position.x > screen_size.x:
+		ScoreLeft.text = str(int(ScoreLeft.text) + 1)
+		
+		position = initialPosition
+		direction.y = 0
+
