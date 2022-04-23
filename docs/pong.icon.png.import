@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pong.icon.png-cf969cb1726340ed9c87f74812cdf47f.stex"
+path="res://.import/pong.icon.png-b0820b09f7da8a6e524f8cf7762eb4fa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://web/pong.icon.png"
-dest_files=[ "res://.import/pong.icon.png-cf969cb1726340ed9c87f74812cdf47f.stex" ]
+source_file="res://docs/pong.icon.png"
+dest_files=[ "res://.import/pong.icon.png-b0820b09f7da8a6e524f8cf7762eb4fa.stex" ]
 
 [params]
 
